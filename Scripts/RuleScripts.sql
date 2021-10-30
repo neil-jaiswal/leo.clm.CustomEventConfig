@@ -72,7 +72,8 @@ BEGIN
 		IF NOT EXISTS (
 				SELECT 1
 				FROM [dbo].[Events]
-				WHERE ([EventId] = @EventId AND [AppId] = @AppId AND [EventName] = @EventName AND [DocumentEntity] = @DocumentEntity AND [EventName] = @EventName AND [IsActive] = @IsActive AND [OnPre] = @OnPre)
+				WHERE ([EventId] = @EventId AND [AppId] = @AppId AND [EventName] = @EventName AND [DocumentEntity] = @DocumentEntity 
+						AND [EventName] = @EventName AND [IsActive] = @IsActive AND [OnPre] = @OnPre)
 				)
 		BEGIN
 			UPDATE [dbo].[Events]
@@ -88,7 +89,7 @@ BEGIN
 	END;
 
 	/* Rule */
-	SET @EventConfigId = '[#EVENTID]';
+	SET @EventConfigId = '[#EVENTCONGIFID]';
 	SET @EventConfigurationType = 'Rule';
 	SET @EventMomentId = 1;
 	SET @IsActive = 1;
@@ -97,7 +98,7 @@ BEGIN
 	IF NOT EXISTS (
 			SELECT 1
 			FROM [dbo].[EventConfigurations]
-			WHERE ([EventConfigurationId] = @EventConfigId OR ([EventId] = @EventId AND [BPC] = @BPC AND [EventConfigurationType] = @EventConfigurationType))
+			WHERE ([EventConfigurationId] = @EventConfigId OR ([EventId] = @EventId  AND [EventConfigurationType] = @EventConfigurationType) AND [BPC] = @BPC) 
 			)
 	BEGIN
 		INSERT INTO [dbo].[EventConfigurations] (
@@ -133,7 +134,7 @@ BEGIN
 	BEGIN
 		SELECT @EventConfigId = [EventConfigurationId]
 		FROM [dbo].[EventConfigurations]
-		WHERE ([EventConfigurationId] = @EventConfigId OR ([EventId] = @EventId AND [BPC] = @BPC AND [EventConfigurationType] = @EventConfigurationType));
+		WHERE ([EventConfigurationId] = @EventConfigId OR ([EventId] = @EventId  AND [EventConfigurationType] = @EventConfigurationType) AND [BPC] = @BPC);
 
 		IF NOT EXISTS (
 				SELECT 1

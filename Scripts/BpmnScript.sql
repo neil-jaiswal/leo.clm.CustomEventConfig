@@ -39,7 +39,7 @@ BEGIN
 					OR (
 						[AppId] = @AppId
 						AND [EventName] = @EventName
-						AND [DocumentEntity] = @DocumentEntity
+						AND [DocumentEntity] =  UPPER(@DocumentEntity)
 						)
 					)
 			)
@@ -122,10 +122,11 @@ BEGIN
 					[EventConfigurationId] = @EventConfigId
 					OR (
 						[EventId] = @EventId
-						AND [BPC] = @BPC
+						
 						AND [EventConfigurationType] = @EventConfigurationType
 						)
-					)
+						AND [BPC] = @BPC
+					) 
 			)
 	BEGIN
 		INSERT INTO [dbo].[EventConfigurations] (

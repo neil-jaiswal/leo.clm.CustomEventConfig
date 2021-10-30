@@ -89,6 +89,7 @@ namespace EventConfig
                     REScript = REScript.Replace("[#BPC]", RuleClass.Bpc)
                                        .Replace("[#EVENTID]", RuleClass.EventId)
                                        .Replace("[#EVENTNAME]", RuleClass.Event.EventName)
+                                       .Replace("[#EVENTCONGIFID]", RuleClass.EventConfigurationId)
                                        .Replace("[#RULEENGINEID]", RuleClass.RuleEngineConfigurationId)
                                        .Replace("[#EVENTTRIGGER]", RuleClass.EventTrigger);
                   
@@ -109,7 +110,6 @@ namespace EventConfig
                 var BpmnClass = JsonConvert.DeserializeObject<BpmEngine>(objectItem.ToString());
                 if (checkBox1.Checked)
                 {
-
                     BpmnClass.BpmEngineId = Guid.NewGuid().ToString();
                     BpmnClass.EventConfigurationId = Guid.NewGuid().ToString();
                     BpmnClass.MessageName = string.IsNullOrEmpty(BpmnClass.MessageName) ? null : BpmnClass.MessageName;
