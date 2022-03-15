@@ -26,8 +26,8 @@ SET @BPC = '[#BPC]';
 
 BEGIN
 	SET @EventId = '[#EVENTID]';
-	SET @AppId = 245;
-	SET @DocumentEntity = 'CLM';
+	SET @AppId = '[#APPID]';
+	SET @DocumentEntity =  '[#ENTITY]';
 	SET @EventName = '[#EVENTNAME]';
 	SET @IsActive = 1;
 	SET @OnPre = 1

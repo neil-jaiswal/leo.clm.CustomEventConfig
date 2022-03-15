@@ -87,12 +87,14 @@ namespace EventConfig
                 {
                     var REScript = File.ReadAllText(RuleEngineScript);
                     REScript = REScript.Replace("[#BPC]", RuleClass.Bpc)
+                                       .Replace("[#APPID]", richTextBox3.Text)
+                                        .Replace("[#ENTITY]", richTextBox4.Text)
                                        .Replace("[#EVENTID]", RuleClass.EventId)
                                        .Replace("[#EVENTNAME]", RuleClass.Event.EventName)
                                        .Replace("[#EVENTCONGIFID]", RuleClass.EventConfigurationId)
                                        .Replace("[#RULEENGINEID]", RuleClass.RuleEngineConfigurationId)
                                        .Replace("[#EVENTTRIGGER]", RuleClass.EventTrigger);
-                  
+
                     richTextBox2.AppendText(Environment.NewLine);
                     richTextBox2.AppendText(REScript);
                     var fileName = string.Format("{0}_{1}_{2}.sql", RuleClass.Event.AppId, RuleClass.EventTrigger, RuleClass.Event.EventName);
@@ -121,6 +123,8 @@ namespace EventConfig
                 {
                     var BpmnScript = File.ReadAllText(BpmnEngineScript);
                     BpmnScript = BpmnScript.Replace("[#BPC]", BpmnClass.Bpc)
+                                           .Replace("[#APPID]", richTextBox3.Text)
+                                           .Replace("[#ENTITY]", richTextBox4.Text)
                                            .Replace("[#EVENTID]", BpmnClass.Event.EventId)
                                            .Replace("[#EVENTNAME]", BpmnClass.Event.EventName)
                                            .Replace("[#EVENTCONFIGID]", BpmnClass.EventConfigurationId)
