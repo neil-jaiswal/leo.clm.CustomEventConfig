@@ -149,9 +149,17 @@ namespace EventConfig
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked)
+            {
                 richTextBox1.Visible = true;
+                richTextBox3.Visible = true;
+                richTextBox4.Visible = true;
+            }
             else
+            {
                 richTextBox1.Visible = false;
+                richTextBox3.Visible = false;
+                richTextBox4.Visible = false;
+            }
         }
 
         private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
