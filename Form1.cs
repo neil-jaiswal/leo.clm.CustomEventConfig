@@ -2,23 +2,24 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EventConfig
 {
+    /// <summary>
+    /// The form1.
+    /// </summary>
     public partial class Form1 : Form
     {
         private readonly string RuleEngineScript = string.Empty;
         private readonly string BpmnEngineScript = string.Empty;
         private readonly StringBuilder builder = new StringBuilder().Append(string.Empty);
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Form1"/> class.
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
@@ -30,9 +31,13 @@ namespace EventConfig
             richTextBox2.AppendText("Rule Engine : " + RuleEngineScript);
             richTextBox2.AppendText(Environment.NewLine);
             richTextBox2.AppendText("Bpmn Engine : " + BpmnEngineScript);
-
         }
 
+        /// <summary>
+        /// button1_S the click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -55,8 +60,8 @@ namespace EventConfig
                     MessageBox.Show("File Exported Successfully");
 
                     /*******
-                    FileStream fileStream = File.OpenRead(openFileDialog1.FileName); 
-                    TextReader textReader = File.OpenText(openFileDialog1.FileName); 
+                    FileStream fileStream = File.OpenRead(openFileDialog1.FileName);
+                    TextReader textReader = File.OpenText(openFileDialog1.FileName);
                     StreamReader sreamReader = new StreamReader(openFileDialog1.FileName);
                     **********/
                 }
@@ -68,6 +73,11 @@ namespace EventConfig
             }
         }
 
+        /// <summary>
+        /// Xoxos the.
+        /// </summary>
+        /// <param name="objectItem">The object item.</param>
+        /// <returns>An EventConfiguration.</returns>
         private EventConfiguration Xoxo(JToken objectItem)
         {
             var eventData = new EventConfiguration();
@@ -146,6 +156,11 @@ namespace EventConfig
             return eventData;
         }
 
+        /// <summary>
+        /// checks the box2_ checked changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked)
@@ -162,6 +177,11 @@ namespace EventConfig
             }
         }
 
+        /// <summary>
+        /// riches the text box1_ key press.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(richTextBox1.Text, "[^0-9]"))

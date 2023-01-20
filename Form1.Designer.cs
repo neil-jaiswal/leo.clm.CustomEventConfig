@@ -1,6 +1,9 @@
 ﻿
 namespace EventConfig
 {
+    /// <summary>
+    /// The form1.
+    /// </summary>
     partial class Form1
     {
         /// <summary>
